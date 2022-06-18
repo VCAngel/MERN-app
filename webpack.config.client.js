@@ -8,28 +8,29 @@ const config = {
     mode: 'development',
     devtool: 'eval-source-map',
     entry: [
-        path.join(CURRENT_WORKING_DIR,'client/index.js')
+        'webpack-hot-middleware/client?reload=true',
+        path.join(CURRENT_WORKING_DIR, 'client/index.js')
     ],
     output: {
-        path: path.join(CURRENT_WORKING_DIR, 'dist'),
-        filename: 'bundle.[fullhash].js',
+        path: path.join(CURRENT_WORKING_DIR, '/dist'),
+        filename: 'bundle.js',
         publicPath: '/dist/'
     },
     plugins: [
+        new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin()
     ],
     resolve: {
-        modules: [CURRENT_WORKING_DIR, "client", "node_modules"],
-        extensions: ["*", ".js", ".jsx", ".ts", "tsx"]
+        alias: {
+            'react-dom': '@hot-loader/react-dom'
+        }
     },
     module: {
         rules: [
             {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader',
-                },
+                use: ['babel-loader']
             },
             {
                 test: /\.css$/,
@@ -37,7 +38,7 @@ const config = {
             },
             {
                 test: /\.s[ac]ss$/i,
-                use: ["style-loader", "css-loader", "sass-loader"],
+                use: ["style-loader", "css-loader", "sass"],
             },
             {
                 test: /\.png|jpe?g|gif$/i,

@@ -1,14 +1,16 @@
 {
     "presets": [
-        "@babel/preset-react",
-        "@babel/preset-env"
+        [
+            "@babel/present-env",
+            {
+                "targets": {
+                    "node": "current"
+                }
+            }
+        ],
+        "@babel/preset-react"
     ],
     "plugins": [
-        [
-            "@babel/plugin-transform-runtime",
-            {
-                "regenerator": true
-            }
-        ]
+        "react-hot-loader/babel"
     ]
 }
