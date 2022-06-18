@@ -22,6 +22,7 @@
   "license": "MIT",
   "dependencies": {
     "@hot-loader/react-dom": "^17.0.2",
+    "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "mongodb": "^4.7.0",
     "react": "^17.0.2",

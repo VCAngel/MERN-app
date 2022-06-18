@@ -12,6 +12,7 @@ const template = () => {
     <body>
         <noscript>You need to enable JavaScript to view the app.</noscript>
         <div id="root"></div>
+        <script type="text/javascript" src="./dist/bundle.js"></script>
     </body>
     
     </html>`;

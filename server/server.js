@@ -1,31 +1,33 @@
 import path from 'path'
 import express from 'express'
 import { MongoClient } from 'mongodb'
-import template from '../template'
 import devBundle from './devBundle'
+import template from '../template'
 
 const app = express()
 
-if (process.env.NODE_ENV == 'development') {
-    devBundle.compile(app)
-}
+//-> Check for env variable and compile
+devBundle.compile(app)
 
+//-> Serving static files from dist/
 const CURRENT_WORKING_DIR = process.cwd()
 app.use('/dist', express.static(path.join(CURRENT_WORKING_DIR, 'dist')))
 
+//-> Rendering template at #root
 app.get('/', (req, res) => {
     res.status(200).send(template())
 })
 
+//-> Start server listening on specified port
 let port = process.env.PORT || 3000
-
 app.listen(port, function onStart(err) {
     if (err) {
-        console.log(err)
+        console.error(err)
     }
     console.info('Server started on port %s.', port)
 })
 
+//-> Connection to MongoDB
 try {
     const url = process.env.MONGODB_URI || 'mongodb://localhost:27017/mernSetup'
 
@@ -33,10 +35,10 @@ try {
         if (err) {
             return
         }
-        console.log("Connected successfully to mongodb server")
+        console.info("Connected successfully to mongodb server")
 
         db.close()
     })
 } catch (e) {
-    console.log(e)
+    console.error(e)
 }

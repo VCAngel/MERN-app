@@ -1,16 +1,12 @@
-import React, { StrictMode } from 'react';
-import ReactDOM from 'react-dom/client';
-import reportWebVitals from './ReportWebVitals';
+import React from 'react';
+import {render} from 'react-dom';
 import App from './App';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = document.getElementById('root');
 
-console.log("asjnckajsnkc")
-
-root.render(
-  <StrictMode>
-      <App />
-  </StrictMode>
-);
-
-reportWebVitals();
+render(
+  <React.StrictMode>
+    <App/>
+  </React.StrictMode>
+  , root
+)
