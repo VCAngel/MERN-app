@@ -16,7 +16,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/VCAngel/Webpack-Boilerplate/templates/MERN"
+    "url": "git+https://github.com/VCAngel/MERN-app"
   },
   "author": "VCAngel",
   "license": "MIT",
