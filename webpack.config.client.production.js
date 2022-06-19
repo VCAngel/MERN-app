@@ -11,6 +11,10 @@ const config = {
         filename: 'bundle.js',
         publicPath: '/dist/'
     },
+    resolve: {
+        modules: [CURRENT_WORKING_DIR, "src", "node_modules"],
+        extensions: ["*", ".js", ".jsx", ".ts", ".tsx"]
+    },
     module: {
         rules: [
             {
